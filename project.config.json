@@ -11,9 +11,10 @@
 	},
 	"appid": "wxb1f9d3640a8d853c",
 	"projectname": "TimerForToastMasters",
-	"libVersion": "2.8.1",
+	"libVersion": "2.10.1",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
 	"condition": {
 		"search": {
 			"current": -1,

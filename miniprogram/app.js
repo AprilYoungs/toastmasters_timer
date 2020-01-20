@@ -16,5 +16,33 @@ App({
     }
 
     this.globalData = {}
-  }
+
+
+
+    // get local openid
+    wx.getStorage({
+      key: 'ids',
+      success: res => {
+        console.log("get openid storge",res)
+        this.globalData.openid = res.data.openid
+      },
+      fail: err => {
+
+        // request cloud openid
+        wx.cloud.callFunction({
+          name: "login",
+          success: res => {
+            this.globalData.openid = res.result.openid
+            console.log("login to cloud", this.globalData.openid)
+            wx.setStorage({
+              key: 'ids',
+              data: { openid: this.globalData.openid },
+            })
+          }
+        })
+      }
+    })
+
+  },
+  
 })
