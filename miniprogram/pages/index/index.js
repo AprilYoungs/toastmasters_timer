@@ -6,7 +6,7 @@ Page({
    * Page initial data
    */
   data: {
-    openId: null,
+    openid: null,
     delBtnWidth: 160,
     isScroll: true,
     times: null,
@@ -15,6 +15,9 @@ Page({
     noMoreData: false,
 
     windowHeight: null,
+
+    // for time picker
+    timeArray: null
   },
 
   loadData() {
@@ -28,20 +31,25 @@ Page({
     this.data.noMoreData = false
     const db = wx.cloud.database()
     db.collection('times')
+      .orderBy('time', 'asc')
       .limit(this.data.pageSize)
-      .where({_openid: this.data.openId})
+      .where({_openid: this.data.openid})
       .get({
         success: res => {
           wx.hideLoading()
           const noMoreData = res.data.length < this.data.pageSize
 
           var times = res.data.map(item=>{
-            item["timeStr"] = `${(item.time-item.time%60)/60}:${item.time%60}`
+            var min = (item.time - item.time % 60) / 60
+            var sec = item.time % 60
+            var minStr = min < 10 ? `0${min}` : `${min}`
+            var secStr = sec < 10 ? `0${sec}` : `${sec}`
+            item["timeStr"] = `${minStr}:${secStr}`
             return item
           })
 
           console.log("collection data", res.data)
-          var add = { "timeStr": "+", "time":"+", "_id": "001", "_openid": app.globalData.openId}
+          var add = { "timeStr": "+", "time":"+", "_id": "001", "_openid": app.globalData.openid}
           times = times.concat([add])
 
           this.setData({
@@ -83,11 +91,15 @@ Page({
           let noMoreData = res.data.length < this.data.pageSize
 
           var times = res.data.map(item => {
-            item["timeStr"] = `${(item.time - item.time % 60) / 60}:${item.time % 60}`
+            var min = (item.time - item.time % 60) / 60
+            var sec = item.time % 60
+            var minStr = min < 10 ? `0${min}` : `${min}`
+            var secStr = sec < 10 ? `0${sec}` : `${sec}`
+            item["timeStr"] = `${minStr}:${secStr}`
             return item
           })
 
-          var add = { "timeStr": "+", "time": "+", "_id": "001", "_openid": app.globalData.openId }
+          var add = { "timeStr": "+", "time": "+", "_id": "001", "_openid": app.globalData.openid }
           times = times.concat([add])
 
           times = this.data.times.concat(times)
@@ -117,32 +129,6 @@ Page({
       this.addNewTime()
     }
 
-  },
-
-  // 添加新的时间
-  addNewTime: function()
-  {
-    console.log("addNewTime")
-    const db = wx.cloud.database()
-    db.collection("times").add({
-      data: {
-        time: 90
-      },
-      success: res => {
-        wx.showToast({
-          title: 'add new timer success',
-        })
-        this.loadData()
-        console.log("add new timer success")
-      },
-      fail: err => {
-        wx.showToast({
-          title: 'add timer fail',
-          icon: 'none'
-        })
-        console.log("add new timer fail")
-      }
-    })
   },
 
   drawStart: function (e) {
@@ -255,20 +241,68 @@ Page({
 
   },
 
-  onLoad() {
-    const app = getApp()
-    console.log("onLoad")
+  // 添加时间数据
+  setupTimeData() {
+    var secs = ["00", "30"]
+    var mins = []
+    for (var i=0; i<10; i++)
+    {
+      mins = mins.concat([`0${i}`])
+    }
+    for (var i = 10; i < 60; i++) {
+      mins = mins.concat([`${i}`])
+    }
     this.setData({
-      windowHeight: app.globalData.windowHeight * 2 - 80,
-      openId: app.globalData.openId
+      timeArray: [mins, secs]
     })
   },
 
+  // 添加新的时间
+  addNewTime: function (sec) {
+    console.log("addNewTime", sec)
+    if (sec <= 0) {return}
+    const db = wx.cloud.database()
+    db.collection("times").add({
+      data: {
+        time: sec
+      },
+      success: res => {
+        wx.showToast({
+          title: 'add new timer success',
+        })
+        this.loadData()
+        console.log("add new timer success")
+      },
+      fail: err => {
+        wx.showToast({
+          title: 'add timer fail',
+          icon: 'none'
+        })
+        console.log("add new timer fail")
+      }
+    })
+  },
+
+  bindTimePicker(e){
+    console.log("bindTimePicker", e.detail.value)
+    var time = e.detail.value
+    var sec = time[0]*60+time[1]*30
+    this.addNewTime(sec)
+  },
+
+  onLoad() {
+    console.log("onLoad")
+    this.data.openid = app.globalData.openid
+    this.setData({
+      windowHeight: app.globalData.windowHeight * 2 - 80
+    })
+  },
   /**
    * Lifecycle function--Called when page show
    */
   onShow: function () {
     this.loadData()
+    this.setupTimeData()
   },
 
   /**

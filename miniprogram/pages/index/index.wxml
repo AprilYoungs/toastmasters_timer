@@ -1,10 +1,13 @@
 <!--index.wxml-->
 <scroll-view style="display:inline; height:{{windowHeight}}rpx;" scroll-y bindscrolltolower="loadMore">
-  <view wx:for="{{times}}" wx:key="{{item._id}}" class='cell' data-index='{{index}}' bindtouchstart="drawStart" bindtouchmove="drawMove" bindtouchend="drawEnd" style="right:{{item.right}}rpx">
-    <view class='cell_content' data-content='{{item.time}}' bindtap='startCountDown' style='{{item.color}}'>
-      <view>
+  <view wx:for="{{times}}" wx:key="_id" class='cell' data-index='{{index}}' bindtouchstart="drawStart" bindtouchmove="drawMove" bindtouchend="drawEnd" style="right:{{item.right}}rpx">
+    <view wx:if="{{item.timeStr!='+'}}" class='cell_content' data-content='{{item.time}}' bindtap='startCountDown' style='{{item.color}}'>
         <label class='text_content'>{{item.timeStr}}</label>
-      </view>
+    </view>
+    <view wx:if="{{item.timeStr=='+'}}" class='cell_content'>
+        <picker mode="multiSelector" bindchange="bindTimePicker" range="{{timeArray}}">
+     <label class='text_content'>{{item.timeStr}}</label>
+  </picker>
     </view>
     <view class="remove" data-index='{{index}}' bindtap="delItem">delete </view>
   </view>

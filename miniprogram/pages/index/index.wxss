@@ -11,19 +11,20 @@
 {
   margin-left: 15rpx;
   margin-right: 15rpx;
-  margin-top: 12rpx;
+  margin-top: 24rpx;
+  margin-bottom: 24rpx;
   border: 1rpx solid #979797;
   border-radius: 10rpx;
   text-align: center;
   background-color: #D8D8D8;
-  height: 100rpx;
+  height: 144rpx;
 }
 
 .text_content
 {
   font-size: 40rpx;
   font-weight: bold;
-  line-height: 100rpx;
+  line-height: 144rpx;
 }
 
 .remove{  
@@ -55,6 +56,8 @@
   color: green;
 }
 
-.space{
-  height: 50rpx;
+scroll-view
+{
+  padding-top: 30rpx;
+  padding-bottom: 50rpx;
 }

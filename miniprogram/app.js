@@ -18,7 +18,6 @@ App({
     this.globalData = {}
 
 
-
     // get local openid
     wx.getStorage({
       key: 'ids',
@@ -27,7 +26,6 @@ App({
         this.globalData.openid = res.data.openid
       },
       fail: err => {
-
         // request cloud openid
         wx.cloud.callFunction({
           name: "login",
