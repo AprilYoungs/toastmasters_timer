@@ -1,2 +1,24 @@
 <!--pages/index/timer.wxml-->
-<text>pages/index/timer.wxml</text>
+
+<!--  -->
+
+
+<view class="box" style="height:{{windowHeight}}rpx;">
+  <view class="box-circle" animation="{{animationData}}" bindtap="tapCircle">
+    <label class="box-text" >{{currentStr}}</label>
+  </view>
+</view>
+
+<view class="labTotal">
+  <label>{{totalStr}}</label>
+</view>
+
+
+<view wx:if="{{pauseTimer==true}}" class="resetView" bindtap="tapReset">
+  <button>
+  <image class="resetImg" src="../../images/resetBtn@2x.png"></image>
+  </button>
+</view>
+
+
+

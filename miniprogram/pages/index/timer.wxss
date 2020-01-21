@@ -1,1 +1,49 @@
 /* pages/index/timer.wxss */
+.box{
+  margin: auto;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+.box-circle{
+  text-align: center;
+  width: 350rpx;
+  height: 350rpx;
+  background: #D8D8D8;
+  border-radius: 50%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-text{
+  font-size: 54rpx;
+  font-weight: 4.5rpx;
+}
+
+.labTotal
+{
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: 300rpx;
+  font-size: 36rpx;
+}
+
+.resetView
+{
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 300rpx;
+  font-size: 36rpx;
+  z-index: 2;
+}
+
+.resetImg
+{
+  height: 75rpx;
+  width: 69rpx;
+}

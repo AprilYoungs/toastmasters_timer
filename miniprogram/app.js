@@ -17,6 +17,13 @@ App({
 
     this.globalData = {}
 
+    wx.getSystemInfo({
+      success: res => {
+        console.log("getSystemInfo", res)
+        this.globalData.windowHeight = res.windowHeight
+        this.globalData.windowWidth = res.windowWidth
+      }
+    })
 
     // get local openid
     wx.getStorage({

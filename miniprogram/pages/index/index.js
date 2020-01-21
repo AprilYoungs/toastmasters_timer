@@ -16,6 +16,8 @@ Page({
 
     windowHeight: null,
 
+    addData: null,
+
     // for time picker
     timeArray: null
   },
@@ -49,8 +51,8 @@ Page({
           })
 
           console.log("collection data", res.data)
-          var add = { "timeStr": "+", "time":"+", "_id": "001", "_openid": app.globalData.openid}
-          times = times.concat([add])
+          
+          times = times.concat([this.data.addData])
 
           this.setData({
             times: times,
@@ -82,7 +84,7 @@ Page({
     const db = wx.cloud.database()
 
     db.collection('times')
-      .orderBy('time', 'desc')
+      .orderBy('time', 'asc')
       .skip(start)
       .limit(this.data.pageSize)
       .get({
@@ -90,6 +92,7 @@ Page({
 
           let noMoreData = res.data.length < this.data.pageSize
 
+          console.log("loadmore", res)
           var times = res.data.map(item => {
             var min = (item.time - item.time % 60) / 60
             var sec = item.time % 60
@@ -99,11 +102,15 @@ Page({
             return item
           })
 
-          var add = { "timeStr": "+", "time": "+", "_id": "001", "_openid": app.globalData.openid }
-          times = times.concat([add])
 
+          console.log("loadmore", times)
+
+          times = times.concat([this.data.addData])
+
+          this.data.times.splice(this.data.times.length-1, 1)
           times = this.data.times.concat(times)
 
+          console.log("loadmore", times)
           // append data
 
           this.setData({
@@ -121,13 +128,12 @@ Page({
   startCountDown: function(e) {
    
     var touch = e.touches[0]
-    var content = e.currentTarget.dataset.content
-    console.log("startCountDown", content)
+    var sec = e.currentTarget.dataset.sec
+    console.log("startCountDown", sec)
 
-    if (content == "+")
-    {
-      this.addNewTime()
-    }
+    wx.navigateTo({
+      url: `timer?sec=${sec}`,
+    })
 
   },
 
@@ -138,11 +144,10 @@ Page({
       return
     }
 
-    console.log("drawStart");
+    
     var touch = e.touches[0]
 
     for (var index in this.data.times) {
-      console.log("drawStart", index)
       var item = this.data.times[index]
       item.right = 0
     }
@@ -294,7 +299,8 @@ Page({
     console.log("onLoad")
     this.data.openid = app.globalData.openid
     this.setData({
-      windowHeight: app.globalData.windowHeight * 2 - 80
+      windowHeight: app.globalData.windowHeight * 2 - 80,
+      addData: { "timeStr": "+", "time": "+", "_id": "001", "_openid": app.globalData.openid }
     })
   },
   /**
