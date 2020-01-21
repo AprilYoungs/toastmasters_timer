@@ -19,28 +19,51 @@ Page({
     yellow: "#D0C865",
     red: "#D06565",
     currentColor: null,
-    slient: false,
+    slient: true,
     pauseTimer: false,
+    isPlaying: false
   },
 
 
   // begin to count down and update the user interface
   beginCountDown()
   {
-
     if (this.data.pauseTimer){return}
 
-    var newSec = this.data.currentSec - 1
-
-    var timeStr = this.formatSec(newSec)
+    var sec = this.data.currentSec
+    var timeStr = this.formatSec(sec)
 
     this.setData({
-      currentSec: newSec,
+      currentSec: sec,
       currentStr: timeStr,
       totalStr: "Total time: " + this.formatSec(this.data.totalSec)
     })
 
-    setTimeout(this.beginCountDown, 1000)
+    this.data.currentSec = this.data.currentSec - 1
+   
+    this.countDownTimer = setTimeout(this.beginCountDown, 1000)
+
+    if (this.data.currentSec <= -30 
+      && this.data.totalSec >= 180
+      && this.data.isPlaying == false)
+    {
+      this.data.currentColor = null
+      this.showRed()
+      this.audio.play()
+      this.data.isPlaying = true
+      return
+    }
+
+    if (this.data.currentSec <= -15 
+      && this.data.totalSec < 180
+      && this.data.isPlaying == false)
+   {
+      this.data.currentColor = null
+      this.showRed()
+      this.audio.play()
+      this.data.isPlaying = true
+      return
+    }
 
     if (this.data.currentSec <= 0) {
       this.showRed()
@@ -89,20 +112,33 @@ Page({
    */
   onLoad: function (options) {
     console.log("timer", options)
-    var sec = options.sec + 1
-
-    //FIXME: remove this line
-    var sec = 60
+    var sec = Number(options.sec) 
 
     this.setData({
       totalSec: sec,
       currentSec: sec,
-      totalStr: this.formatSec(sec),
-      currentStr: this.formatSec(sec),
       pauseTimer: false
     })
 
-    this.beginCountDown()
+    const innerAudioContext = wx.createInnerAudioContext()
+
+    innerAudioContext.loop = true
+    innerAudioContext.src = 'https://7469-timerdev-5wjqv-1301150003.tcb.qcloud.la/alarm.wav?sign=600f861a7d3d4e2221bfe83786cd87d1&t=1579614060'
+
+    this.audio = innerAudioContext
+
+    this.audio.onPlay(() => {
+      console.log('play alarm')
+    })
+    this.audio.onError((res) => {
+      console.log(res.errMsg)
+      console.log(res.errCode)
+    })
+
+    this.audio.onStop(()=>{
+      console.log("stop alarm")
+    })
+
   },
 
 
@@ -110,8 +146,9 @@ Page({
    * Lifecycle function--Called when page show
    */
   onShow: function () {
+    console.log("onShow")
     this.setData({
-      windowHeight: app.globalData.windowHeight * 2 - 80
+      windowHeight: app.globalData.windowHeight
     })
 
     var animation = wx.createAnimation({
@@ -120,21 +157,32 @@ Page({
     })
 
     this.animation = animation
-    
+
+    this.beginCountDown()
   },
 
   // reset timer
   tapReset(){
 
-    var opt = {sec: this.data.totalSec}
-    this.onLoad(opt)
+    this.setData({
+      totalSec: this.data.totalSec,
+      currentSec: this.data.totalSec,
+      pauseTimer: false
+    })
 
+    this.beginCountDown()
   },
 
   tapCircle(){
     if (this.data.slient == false)
     {
       this.shrinkAndBecomeNormal()
+
+      if (this.data.isPlaying)
+      {
+        this.data.isPlaying = false 
+        this.audio.stop()
+      }
     }
     else 
     {
@@ -147,7 +195,7 @@ Page({
       if (this.data.pauseTimer)
       {
         this.setData({
-          totalStr: "Used time: " + this.formatSec(this.data.totalSec - this.data.currentSec)
+          totalStr: "Used time: " + this.formatSec(this.data.totalSec - this.data.currentSec - 1)
         })
       }
     }
@@ -238,6 +286,13 @@ Page({
     this.vibrateTimer = null
   },
 
+  clearTimers(){
+    clearInterval(this.blinkTimer)
+    clearInterval(this.vibrateTimer)
+    clearTimeout(this.countDownTimer)
+    this.audio.stop()
+  },
+  
   /**
    * Lifecycle function--Called when page is initially rendered
    */
@@ -249,8 +304,10 @@ Page({
    * Lifecycle function--Called when page hide
    */
   onHide: function () {
-    clearInterval(this.blinkTimer)
-    clearInterval(this.vibrateTimer)
+    
+    this.clearTimers()
+    console.log("onHide")
+
   },
 
   /**
@@ -258,6 +315,9 @@ Page({
    */
   onUnload: function () {
 
+    this.clearTimers()
+    console.log("onUnload")
+    
   },
 
   /**
@@ -280,4 +340,5 @@ Page({
   onShareAppMessage: function () {
 
   }
+
 })

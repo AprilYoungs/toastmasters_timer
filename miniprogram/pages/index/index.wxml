@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<scroll-view style="display:inline; height:{{windowHeight}}rpx;" scroll-y bindscrolltolower="loadMore">
+<scroll-view style="display:inline; height:{{windowHeight}}px;" scroll-y bindscrolltolower="loadMore">
   <view wx:for="{{times}}" wx:key="_id" class='cell' data-index='{{index}}' bindtouchstart="drawStart" bindtouchmove="drawMove" bindtouchend="drawEnd" style="right:{{item.right}}rpx">
     <view wx:if="{{item.timeStr!='+'}}" class='cell_content' data-sec='{{item.time}}' bindtap='startCountDown' style='{{item.color}}'>
         <label class='text_content'>{{item.timeStr}}</label>

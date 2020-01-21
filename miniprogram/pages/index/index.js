@@ -299,16 +299,20 @@ Page({
     console.log("onLoad")
     this.data.openid = app.globalData.openid
     this.setData({
-      windowHeight: app.globalData.windowHeight * 2 - 80,
+      windowHeight: app.globalData.windowHeight,
       addData: { "timeStr": "+", "time": "+", "_id": "001", "_openid": app.globalData.openid }
     })
+
+    this.loadData()
+    this.setupTimeData()
   },
   /**
    * Lifecycle function--Called when page show
    */
   onShow: function () {
-    this.loadData()
-    this.setupTimeData()
+
+    console.log("onShow")
+
   },
 
   /**

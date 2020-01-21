@@ -7,8 +7,8 @@
 }
 .box-circle{
   text-align: center;
-  width: 350rpx;
-  height: 350rpx;
+  width: 175px;
+  height: 175px;
   background: #D8D8D8;
   border-radius: 50%;
 
@@ -28,7 +28,7 @@
   position: absolute;
   width: 100%;
   text-align: center;
-  bottom: 300rpx;
+  bottom: 200rpx;
   font-size: 36rpx;
 }
 
@@ -37,7 +37,7 @@
   position: absolute;
   width: 100%;
   text-align: center;
-  top: 300rpx;
+  top: 200rpx;
   font-size: 36rpx;
   z-index: 2;
 }

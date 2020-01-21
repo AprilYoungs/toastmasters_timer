@@ -3,7 +3,7 @@
 <!--  -->
 
 
-<view class="box" style="height:{{windowHeight}}rpx;">
+<view class="box" style="height:{{windowHeight}}px;">
   <view class="box-circle" animation="{{animationData}}" bindtap="tapCircle">
     <label class="box-text" >{{currentStr}}</label>
   </view>
