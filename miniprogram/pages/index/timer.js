@@ -102,7 +102,6 @@ Page({
       pauseTimer: false
     })
 
-
     this.beginCountDown()
   },
 
