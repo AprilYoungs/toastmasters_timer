@@ -1,12 +1,60 @@
-# 云开发 quickstart
+## Timer for toastmasters' timer
+This is a wechat mini program dedicated for toastmasters' timer. It follow the time rule and show you the color to post your card.
 
-这是云开发的快速启动指引，其中演示了如何上手使用云开发的三大基础能力：
+## How to use it?
 
-- 数据库：一个既可在小程序前端操作，也能在云函数中读写的 JSON 文档型数据库
-- 文件存储：在小程序前端直接上传/下载云端文件，在云开发控制台可视化管理
-- 云函数：在云端运行的代码，微信私有协议天然鉴权，开发者只需编写业务逻辑代码
+### Add timer list
+First you need to add a timer list before the meeting, just tap the "+" button, and add some timers you are about to use during the meeting. And the timer list will save in your wechat account.
+<div style="text-align: center;">
+    <image src="ScreenShot/listNone.png" style="width: 375px; max-width:auto;">
+</div>
 
-## 参考文档
+<div style="text-align: center;">
+    <image src="ScreenShot/add.png" style="width: 375px; max-width:auto;">
+</div>
 
-- [云开发文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
+<div style="text-align: center;">
+    <image src="ScreenShot/timerList.png" style="width: 375px; max-width:auto;">
+</div>
+
+### Start a count down timer
+Just tap the any timer in the list, and it will begin to count down. The time string in the circle show the time you left, and in the bottom show the time span of the timer.
+<div style="text-align: center;">
+    <image src="ScreenShot/normal.png" style="width: 375px; max-width:auto;">
+</div>
+
+When the time span is **bigger or equal to 5:00**, and the time left is **within 2:00**, the screen will become green and blink, the device will begin to vibrate;<br>
+When the time span is **within 5:00**, and the time left is **within 1:00**, the screen will become green and blink, the device will begin to vibrate.<br>
+That means your should post your **green card** to the speaker, and then just tap anywhere in the screen, it will stop vibrating and become the normal look like before.
+<div style="text-align: center;">
+    <image src="ScreenShot/green.png" style="width: 338px; max-width:auto;">
+</div>
+
+When the time span is **bigger or equal to 5:00**, and the time left is **within 1:00**, the screen will become yellow and blink, the device will begin to vibrate;<br>
+When the time span is **within 5:00**, and the time left is **within 0:30**, the screen will become yellow and blink, the device will begin to vibrate.<br>
+That means your should post your **yellow card** to the speaker, and then just tap anywhere in the screen, it will stop vibrating and become the normal look like before.
+
+<div style="text-align: center;">
+    <image src="ScreenShot/yellow.png" style="width: 375px; max-width:auto;">
+</div>
+
+When the time is **less or equal then 0 sec** the screen will become red and blink, the device will begin to vibrate.<br>
+That means your should post your **red card** to the speaker, and then just tap anywhere in the screen, it will stop vibrating and become the normal look like before.
+<div style="text-align: center;">
+    <image src="ScreenShot/red.png" style="width: 375px; max-width:auto;">
+</div>
+
+When the time span is **bigger or equal to 5:00**, and the time is **exceed -0:30**, the screen will become purple and blink, the device will begin to vibrate and ring;<br>
+When the time span is **within 5:00**, and the time left is **exceed -0:15**, the screen will become purple and blink, the device will begin to vibrate and ring.<br>
+That means your should **hit and bell** in your desk with the hammer, and then just tap anywhere in the screen, it will stop vibrating and become the normal look like before.
+
+<div style="text-align: center;">
+    <image src="ScreenShot/purple.png" style="width: 375px; max-width:auto;">
+</div>
+
+Anytime you want to pause the timer, make the screen become normal (that means you can see the circle in the center) and then tap the circle, the timer will pause and below will show the **total time span**. Above the circle is a reset button, tap it and the timer will set to its initial state and begin to count down again.
+
+<div style="text-align: center;">
+    <image src="ScreenShot/pause.png" style="width: 375px; max-width:auto;">
+</div>
 

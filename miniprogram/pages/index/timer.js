@@ -18,6 +18,7 @@ Page({
     green: "#65D087",
     yellow: "#D0C865",
     red: "#D06565",
+    purple: "#D06593",
     currentColor: null,
     slient: true,
     pauseTimer: false,
@@ -36,7 +37,7 @@ Page({
     this.setData({
       currentSec: sec,
       currentStr: timeStr,
-      totalStr: "Total time: " + this.formatSec(this.data.totalSec)
+      totalStr: "Time span: " + this.formatSec(this.data.totalSec)
     })
 
     this.data.currentSec = this.data.currentSec - 1
@@ -44,24 +45,16 @@ Page({
     this.countDownTimer = setTimeout(this.beginCountDown, 1000)
 
     if (this.data.currentSec <= -30 
-      && this.data.totalSec >= 180
-      && this.data.isPlaying == false)
+      && this.data.totalSec >= 180)
     {
-      this.data.currentColor = null
-      this.showRed()
-      this.audio.play()
-      this.data.isPlaying = true
+      this.showPurple()
       return
     }
 
     if (this.data.currentSec <= -15 
-      && this.data.totalSec < 180
-      && this.data.isPlaying == false)
+      && this.data.totalSec < 180)
    {
-      this.data.currentColor = null
-      this.showRed()
-      this.audio.play()
-      this.data.isPlaying = true
+      this.showPurple()
       return
     }
 
@@ -225,6 +218,18 @@ Page({
     if (this.data.currentColor != this.data.red) {
       this.expandAndChangeColor(this.data.red)
       this.data.currentColor = this.data.red
+    }
+  },
+
+  // show purple color and ringing
+  showPurple() {
+
+    if (this.data.currentColor != this.data.purple) {
+      this.expandAndChangeColor(this.data.purple)
+      this.data.currentColor = this.data.purple
+
+      this.data.isPlaying = true
+      this.audio.play()
     }
   },
 
