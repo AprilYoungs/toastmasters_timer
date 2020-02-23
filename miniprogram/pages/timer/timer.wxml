@@ -20,5 +20,13 @@
   </button>
 </view>
 
+<view class="name">
+  <input
+  value="{{inputName}}" 
+  placeholder="who is the speaker"
+  bindinput="getName"
+  >
+  </input>
+</view>
 
 

@@ -22,7 +22,9 @@ Page({
     currentColor: null,
     slient: true,
     pauseTimer: false,
-    isPlaying: false
+    isPlaying: false,
+
+    inputName: null
   },
 
 
@@ -134,6 +136,48 @@ Page({
 
   },
 
+getName(e){
+  const name = e.detail.value
+  this.data.inputName = name
+
+  console.log("Get name->", name)
+},
+
+saveRecord()
+{
+    // save the record to a list
+    // [{name: xxx, time:xxx}]
+
+  // const newRecord = 
+
+  var list = wx.getStorageSync("history")
+
+  console.log("list", list)
+
+  if (list == '')
+  {
+    list = [{
+      "name": this.data.inputName,
+      "time": this.formatSec(this.data.totalSec - this.data.currentSec - 1),
+      "total": this.formatSec(this.data.totalSec),
+      "exceed": (this.data.currentSec - this.data.totalSec) > -1
+    }]
+  }
+  else
+  {
+    list = list.concat([{
+      "name": this.data.inputName,
+      "time": this.formatSec(this.data.totalSec - this.data.currentSec - 1),
+      "total": this.formatSec(this.data.totalSec),
+      "exceed": (this.data.currentSec - this.data.totalSec) > -1
+    }])
+  }
+  wx.setStorage({
+    key: 'history',
+    data: list,
+  })
+
+},
 
   /**
    * Lifecycle function--Called when page show
@@ -157,13 +201,17 @@ Page({
   // reset timer
   tapReset(){
 
+    this.saveRecord()
+
     this.setData({
       totalSec: this.data.totalSec,
       currentSec: this.data.totalSec,
-      pauseTimer: false
+      pauseTimer: false,
+      inputName: null
     })
 
     this.beginCountDown()
+
   },
 
   tapCircle(){
@@ -319,6 +367,12 @@ Page({
    * Lifecycle function--Called when page unload
    */
   onUnload: function () {
+
+    // save the record if it's paused
+    if (this.data.pauseTimer)
+    {
+      this.saveRecord()
+    }
 
     this.clearTimers()
     console.log("onUnload")

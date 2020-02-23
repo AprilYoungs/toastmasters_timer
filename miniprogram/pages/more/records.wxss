@@ -1,0 +1,58 @@
+
+.cell
+{
+  height: 80rpx;
+  /* text-align: center; */
+  background: #FFF;
+  position: relative;
+}
+
+.content
+{
+  float: left;
+  width: 100%;
+}
+
+.text
+{
+  font-size: 40rpx;
+  line-height: 78rpx;
+  height: 78rpx;
+  width: 100%;
+  /* text-align: left; */
+  /* padding-left: 0rpx; */
+  margin-left: 10rpx;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+}
+
+.line
+{
+  height: 2rpx;
+  /* margin-left: 100rpx; */
+  background: #aaa;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+.remove{  
+  width: 160rpx;  
+  height: 100%;  
+  background-color: red; 
+  color: white; 
+  position: absolute;  
+  top: 0;  
+  right: -160rpx;  
+  display: flex;  
+  justify-content: center;  
+  align-items: center;  
+}  
+
+.blank
+{
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 35rpx;
+}

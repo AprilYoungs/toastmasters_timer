@@ -1,0 +1,28 @@
+<!--pages/more/records.wxml-->
+
+<button 
+style="background:#C4E1CD; margin-bottom: 20rpx;margin-top:20rpx;"
+bindtap="removeAll"
+>
+Remove all
+</button>
+<scroll-view wx:if="{{records!=null}}" style="display:inline; height:{{windowHeight}}px;" scroll-y bindscrolltolower="loadMore">
+  <view wx:for="{{records}}" wx:key="_id" class='cell' data-index='{{index}}' bindtouchstart="drawStart" bindtouchmove="drawMove" bindtouchend="drawEnd" style="right:{{item.right}}rpx">
+    <view class="cell">
+      <view class="content">
+        <view class="textContent">
+          <text class="text" wx:if="{{item.exceed}}" >{{item.name}}--<text style="color:#a00">{{item.time}}</text>/{{item.total}}</text>
+          <text class="text" wx:if="{{item.exceed==false}}" >{{item.name}}--<text style="color:#0a0">{{item.time}}</text>/{{item.total}}</text>
+          
+        </view>
+        <view class="line"></view>
+      </view>
+    </view>
+    
+    <view class="remove" data-index='{{index}}' bindtap="delItem">delete </view>
+  </view>
+</scroll-view>
+
+<view wx:if="{{records==null}}" class="blank">
+No records yet.
+</view>

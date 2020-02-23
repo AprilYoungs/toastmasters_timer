@@ -1,0 +1,52 @@
+/* pages/more/index.wxss */
+
+
+
+.icon
+{
+  width: 56rpx;
+  height: 56rpx;
+  margin: 10rpx;
+  float: left;
+}
+
+.cell
+{
+  height: 80rpx;
+  /* text-align: center; */
+  background: #FFF;
+}
+
+.content
+{
+  float: left;
+  width: 80%;
+}
+
+.text
+{
+  font-size: 40rpx;
+  line-height: 78rpx;
+  height: 78rpx;
+  width: 100%;
+  /* text-align: left; */
+  /* padding-left: 0rpx; */
+  margin-left: 10rpx;
+}
+
+.line
+{
+  height: 2rpx;
+  /* margin-left: 100rpx; */
+  background: #aaa;
+}
+
+.history-btn
+{
+  background:#65D087;
+  position: absolute;
+  bottom: 100rpx;
+  height: 300rpx;
+  width: 300rpx;
+  line-height: 300rpx;
+}

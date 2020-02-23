@@ -1,0 +1,42 @@
+
+
+<view class="cell" bindtap="about">
+<image class="icon" src="../../images/about.png">
+</image>
+<view class="content">
+<label class="text">about</label>
+<view class="line"></view>
+</view>
+</view>
+
+<view class="cell" bindtap="howTo">
+<image class="icon" src="../../images/guide.png">
+</image>
+<view class="content">
+<label class="text">How to use it</label>
+<view class="line"></view>
+</view>
+</view>
+
+<!-- <view style="height:30rpx;">
+</view> -->
+
+<view class="cell" 
+style="background:#C4E1CD;"
+bindtap="historyList">
+<image class="icon" src="../../images/list.png">
+</image>
+<view class="content">
+<label class="text">Records</label>
+<view class="line"></view>
+</view>
+</view>
+
+<!-- <view class="cell">
+<image class="icon" src="../../images/about.png">
+</image>
+<label class="text">
+about
+</label>
+<view class="line"></view>
+</view>  -->
