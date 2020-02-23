@@ -369,10 +369,7 @@ saveRecord()
   onUnload: function () {
 
     // save the record if it's paused
-    if (this.data.pauseTimer)
-    {
-      this.saveRecord()
-    }
+    this.saveRecord()
 
     this.clearTimers()
     console.log("onUnload")

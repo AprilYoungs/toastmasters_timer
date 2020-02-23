@@ -305,6 +305,8 @@ Page({
 
     this.loadData()
     this.setupTimeData()
+
+    this.checkForUpdate()
   },
   /**
    * Lifecycle function--Called when page show
@@ -320,5 +322,31 @@ Page({
    */
   onPullDownRefresh: function () {
     this.loadData()
+  },
+
+  checkForUpdate() {
+    const updateManager = wx.getUpdateManager()
+
+
+    updateManager.onCheckForUpdate(function (res) {
+      // 请求完新版本信息的回调
+      console.log("onCheckForUpdate", res.hasUpdate)
+    })
+
+    updateManager.onUpdateReady(function () {
+      wx.showModal({
+        title: 'New Version',
+        content: 'New version is ready,reboot now?',
+        confirmText: "Reboot",
+        cancelText: "Cancel",
+        success(res) {
+          if (res.confirm) {
+            // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
+            updateManager.applyUpdate()
+          }
+        }
+      })
+    })
+
   }
 })

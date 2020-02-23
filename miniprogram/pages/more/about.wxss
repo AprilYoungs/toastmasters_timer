@@ -1,18 +1,18 @@
-/* pages/more/howto.wxss */
 
 page{
   background: white;
   /* padding-left: 30rpx;
   margin-right: 30rpx; */
   /* padding-right: 30rpx; */
+  padding-top: 60rpx;
   padding-bottom: 120rpx;
 }
 
 image
 {
-  width: 70%;
-  margin-left: 15%;
-  /* height: auto; */
+  width: 94%;
+  margin-left: 3%;
+  margin-right: 3%;
 }
 
 .head

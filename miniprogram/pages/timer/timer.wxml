@@ -27,6 +27,7 @@
   bindinput="getName"
   >
   </input>
+  <view class="line"></view>
 </view>
 
 

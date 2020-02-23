@@ -3,6 +3,7 @@
     "pages/timer/index",
     "pages/timer/timer",
     "pages/more/index",
+    "pages/more/about",
     "pages/more/howto",
     "pages/more/records"
   ],

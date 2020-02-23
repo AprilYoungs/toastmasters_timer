@@ -1,4 +1,4 @@
-// pages/more/index.js
+// pages/more/about.js
 Page({
 
   /**
@@ -8,29 +8,31 @@ Page({
 
   },
 
-  about(e)
+  saveImage(e)
   {
-    console.log("tap about")
-    wx.navigateTo({
-      url: 'about',
+    console.log("saveImage")
+    wx.downloadFile({
+      url:"https://7469-timerdev-5wjqv-1301150003.tcb.qcloud.la/IMG_1723.JPG?sign=ad4a1832cb6005acc23fabd5f6afdb45&t=1582468999",
+      success:function(res){
+        if (res.statusCode === 200)
+        {
+          wx.saveImageToPhotosAlbum({
+            filePath: res.tempFilePath,
+            success(res){
+              wx.showToast({
+                title: 'Save success!',
+              })
+            },
+            fail(res){
+              wx.showToast({
+                title: 'Fail to save!',
+              })
+            }
+          })
+        }
+      }
     })
   },
-
-  howTo(e)
-  {
-    console.log("tap How to")
-    wx.navigateTo({
-      url: 'howto',
-    })
-  },
-
-  historyList(e) {
-    console.log("tap History")
-    wx.navigateTo({
-      url: 'records',
-    })
-  },
-
   /**
    * Lifecycle function--Called when page load
    */

@@ -1,0 +1,40 @@
+<!--pages/more/about.wxml-->
+<text class="content">This mini-program is design to make the job of the timer more easily, if you have any advice or suggestion about it, don't hesitate to contact the coder.</text>
+
+<text class='head'>About the coder</text>
+<image src="cloud://timerdev-5wjqv.7469-timerdev-5wjqv-1301150003/IMG_1961.JPG" mode="widthFix"/>
+<text class="content">
+I am April Yang, I am an iOS developer, and this mini-program is born after I tried to be the <text class="strong">timer</text> of the toastmaster meeting. It's kind of hard when you want to record the time and hear what the speaker talk, so I develop this application. Maybe it can make the job of the timer more easily. I am from <text class="strong">CBD Toastmasters Club</text>. 
+My wechat:  <text class="strong">legendofundead</text></text>
+<image bindlongpress="saveImage" src="cloud://timerdev-5wjqv.7469-timerdev-5wjqv-1301150003/IMG_1723.JPG" mode="widthFix"/>
+
+<text class='head'>CBD Toastmasters Club</text>
+<image src="cloud://timerdev-5wjqv.7469-timerdev-5wjqv-1301150003/CBD.jpeg" mode="widthFix">
+</image>
+<text class="content">
+<text class="strong">C=Confident B=Brilliant  D=Dynamic</text>\n
+<text class="strong">1st June 2017</text> born to the world
+"baby" attracted more than 40 memebers within about 2 months!
+<text class="strong">2017.9-2017.10</text> Successfully held speechcraft boot camp
+<text class="strong">2017.6- Now</text>  invited 8 famous toastmaster stars, and organized more than 15 practical workshops.
+<text class="strong">🎈CBD Toastmasters Mission?</text>
+Be Confident, Briliant & Dynamic. Be better Yourselves
+<text class="strong">🎈CBD Family </text>
+We are a group of lively and energetic people, we have passion and knowledge, we enjoy learning and sharing, and we open our minds to see the world in a totally different way.
+<text class="strong">🎈Why CBD Toastmasters?</text>
+Regular Meeting Every Friday
+English improvement
+Public Speaking skills improvement
+Leadership skills improvement
+Know friends from different type of business
+Know the world from various kinds of angle</text>
+
+<text class="content">
+<text class="strong">🎈How to be one of us?</text>
+Contact with our charming VPM Howie Yao:
+<text class="strong">We Chat:</text> minghao_yao
+<text class="strong">🎈When & Where is our meeting?</text>
+Every Friday, 6B, XingHua Building A, FuTian district. Metro Station: Line 1, Science Museum exit B or Line 2 Yannan exit A
+每周五，福田区兴华大厦A座 6B，地铁1号线 科学馆B出口 或者2号线 燕南 A出口</text>
+<image src="cloud://timerdev-5wjqv.7469-timerdev-5wjqv-1301150003/CBD2.jpeg" mode="widthFix"/>
+

@@ -1,2 +1,64 @@
 <!--pages/more/howto.wxml-->
 
+<text class="head">Add timer list</text>
+<text class="content">First you need to add a timer list before the meeting, just tap the "+" button, and add some timers you are about to use during the meeting. The timer list will save in your wechat account.</text>
+<image src="cloud://timerdev-5wjqv.7469-timerdev-5wjqv-1301150003/timer1.jpg" mode="widthFix"/>
+<image src="cloud://timerdev-5wjqv.7469-timerdev-5wjqv-1301150003/timer2.jpg" mode="widthFix"/>
+<image src="cloud://timerdev-5wjqv.7469-timerdev-5wjqv-1301150003/timer3.jpg" mode="widthFix"/>
+<text class="content">Swipe left to remove a timer.</text>
+<image src="cloud://timerdev-5wjqv.7469-timerdev-5wjqv-1301150003/timer8.jpg" mode="widthFix"/>
+
+
+
+<text class="head"> Start a count down timer</text>
+<text class="content">Just tap the any timer in the list, and it will begin to count down. The time in the circle show the time you left, and in the bottom show the time span of the timer.
+Input the name of speaker, then you can see the records later.</text>
+<image src="cloud://timerdev-5wjqv.7469-timerdev-5wjqv-1301150003/timer4.jpg" mode="widthFix"/>
+
+
+<text class="content">When the time span is <text class="strong">bigger or equal to 5:00</text>, and the time left is <text class="strong">within 2:00</text>, the screen will become green and blink, the device will begin to vibrate;
+When the time span is <text class="strong">within 5:00</text>, and the time left is <text class="strong">within 1:00</text>, the screen will become green and blink, the device will begin to vibrate.
+That means your should post your <text class="strong">green card</text> to the speaker, and then just tap anywhere in the screen, it will stop vibrating and become the normal look like before.</text>
+<image src="cloud://timerdev-5wjqv.7469-timerdev-5wjqv-1301150003/timer10.jpg" mode="widthFix"/>
+
+<text class="content">When the time span is <text class="strong">bigger or equal to 5:00</text>, and the time left is <text class="strong">within 1:00</text>, the screen will become yellow and blink, the device will begin to vibrate;
+When the time span is <text class="strong">within 5:00</text>, and the time left is <text class="strong">within 0:30</text>, the screen will become yellow and blink, the device will begin to vibrate.
+That means your should post your <text class="strong">yellow card</text> to the speaker, and then just tap anywhere in the screen, it will stop vibrating and become the normal look like before.</text>
+
+<image src="cloud://timerdev-5wjqv.7469-timerdev-5wjqv-1301150003/timer11.jpg" mode="widthFix"/>
+
+
+<text class="content">When the time is <text class="strong">less or equal then 0 sec</text> the screen will become red and blink, the device will begin to vibrate.
+That means your should post your <text class="strong">red card</text> to the speaker, and then just tap anywhere in the screen, it will stop vibrating and become the normal look like before.</text>
+
+<image src="cloud://timerdev-5wjqv.7469-timerdev-5wjqv-1301150003/timer12.jpg" mode="widthFix"/>
+
+
+<text class="content">When the time span is <text class="strong">bigger or equal to 5:00</text>, and the time is <text class="strong">exceed -0:30</text>, the screen will become purple and blink, the device will begin to vibrate and ring;
+When the time span is <text class="strong">within 5:00</text>, and the time left is <text class="strong">exceed -0:15</text>, the screen will become purple and blink, the device will begin to vibrate and ring.
+That means your should <text class="strong">hit the bell</text> in your desk with the hammer, and then just tap anywhere in the screen, it will stop vibrating and become the normal look like before.</text>
+
+<image src="cloud://timerdev-5wjqv.7469-timerdev-5wjqv-1301150003/timer13.jpg" mode="widthFix"/>
+
+
+<text class="content">Anytime you want to pause the timer, make the screen become normal (that means you can see the circle in the center) and then tap the circle, the timer will pause and below will show the <text class="strong">total time span</text>. Above the circle is a reset button, tap it and the timer will set to its initial state and begin to count down again. The name will be clear too, you need to input the new speaker's name.</text>
+
+<image src="cloud://timerdev-5wjqv.7469-timerdev-5wjqv-1301150003/timer5.jpg" mode="widthFix"/>
+
+<text class="head">Timing to record the time(important)</text>
+<text class="content">1. Everytime you hit the reset button, the name will be clear, the record is saved. Then you can input a new name for the new timer
+2. Everytime you back to the previous view to choose a new timer, the record is saved.
+</text>
+
+
+
+<text class="head">Check the records</text>
+
+<image src="cloud://timerdev-5wjqv.7469-timerdev-5wjqv-1301150003/timer9.jpg" mode="widthFix"/>
+<image src="cloud://timerdev-5wjqv.7469-timerdev-5wjqv-1301150003/timer6.jpg" mode="widthFix"/>
+
+<text class="content">
+You can remove all at the beginning of the meeting, or remove some records.</text>
+
+<text class="content">
+<text style="color:#0a0">Green</text> means the time the speaker used is less then the time span, <text style="color:#a00">red</text> means used extra time.</text>
