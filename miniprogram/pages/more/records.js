@@ -1,4 +1,7 @@
 // pages/more/records.js
+
+const app = getApp()
+
 Page({
 
   /**
@@ -81,7 +84,7 @@ Page({
     console.log("delItem", index)
 
   // delete an element and update the storage
-    this.data.records.splice(index)
+    this.data.records.splice(index, 1)
     this.data.records = this.data.records.length > 0 ? this.data.records : null
     this.setData({
       records: this.data.records
@@ -95,6 +98,8 @@ Page({
    */
   onLoad(options) {
     var list = wx.getStorageSync("history")
+    if (list == "") return
+
     list = list.map(item => {
       item.name = item.name == null ? "Unknown" : item.name
       // var str = name + "--" + item.time+"/"+item.total
@@ -105,6 +110,17 @@ Page({
 
     this.setData({
       records: list
+    })
+
+    wx.getSystemInfo({
+      success: res => {
+        console.log("getSystemInfo", res)
+        let statusBar = Number(res.statusBarHeight) - 20
+
+        this.setData({
+          windowHeight: Number(res.windowHeight)-80-statusBar*1.3
+        })
+      }
     })
   },
 

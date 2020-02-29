@@ -56,3 +56,18 @@
   line-height: 100rpx;
   font-size: 35rpx;
 }
+.removeButton
+{
+  background:#C4E1CD; 
+  margin-bottom: 20px;
+  margin-top:20px;
+  margin-left:25%; 
+  margin-right:25%; 
+  text-align:center;
+  height:40px;
+  line-height:40px;
+  width:50%; 
+  font-weight: 700;
+  border-radius: 5px;
+
+}

@@ -1,12 +1,11 @@
 <!--pages/more/records.wxml-->
 
-<button 
-style="background:#C4E1CD; margin-bottom: 20rpx;margin-top:20rpx;"
+<view class="removeButton"
 bindtap="removeAll"
 >
 Remove all
-</button>
-<scroll-view wx:if="{{records!=null}}" style="display:inline; height:{{windowHeight}}px;" scroll-y bindscrolltolower="loadMore">
+</view>
+<scroll-view wx:if="{{records!=null}}" style="display:inline; height:{{windowHeight}}px;" scroll-y >
   <view wx:for="{{records}}" wx:key="_id" class='cell' data-index='{{index}}' bindtouchstart="drawStart" bindtouchmove="drawMove" bindtouchend="drawEnd" style="right:{{item.right}}rpx">
     <view class="cell">
       <view class="content">

@@ -58,6 +58,6 @@
 
 scroll-view
 {
-  padding-top: 30rpx;
-  padding-bottom: 50rpx;
+  /* padding-top: 30rpx;
+  padding-bottom: 50rpx; */
 }

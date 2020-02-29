@@ -13,6 +13,7 @@ Page({
     totalStr: null,
     currentStr: null,
     windowHeight: null,
+    radius:50,
 
     animationData: {},
     green: "#65D087",
@@ -184,8 +185,13 @@ saveRecord()
    */
   onShow: function () {
     console.log("onShow")
-    this.setData({
-      windowHeight: app.globalData.windowHeight
+    wx.getSystemInfo({
+      success: res => {
+        console.log("getSystemInfo", res)
+        this.setData({
+          windowHeight: Number(res.windowHeight)
+        })
+      }
     })
 
     var animation = wx.createAnimation({
@@ -285,11 +291,12 @@ saveRecord()
 
     this.animation
       .width(app.globalData.windowWidth)
-      .height(10000)
+      .height(this.data.windowHeight)
       .backgroundColor(color)
       .step()
 
     this.setData({
+      radius: 0,
       animationData: this.animation.export()
     })
 
@@ -327,6 +334,7 @@ saveRecord()
       .step()
 
     this.setData({
+      radius: 50,
       animationData: this.animation.export()
     })
 

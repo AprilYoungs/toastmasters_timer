@@ -7,9 +7,9 @@
     <view wx:if="{{item.timeStr=='+'}}" class='cell_content'>
         <picker mode="multiSelector" bindchange="bindTimePicker" range="{{timeArray}}">
      <label class='text_content'>{{item.timeStr}}</label>
-  </picker>
+     </picker>
     </view>
     <view class="remove" data-index='{{index}}' bindtap="delItem">delete </view>
   </view>
 </scroll-view>
-<!-- <view class="space"></view> -->
+<!-- <view style="background:red; height:624px"></view> -->
